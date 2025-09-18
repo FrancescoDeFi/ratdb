@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Gene Expression Dot Plot Viewer</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+    <div id="access-gate" class="access-overlay" role="dialog" aria-modal="true" aria-labelledby="access-title">
+        <div class="access-card">
+            <h2 id="access-title">Restricted Access</h2>
+            <p class="access-subtitle">Enter the shared password to continue.</p>
+            <form id="access-form" class="access-form" autocomplete="off">
+                <label class="access-label" for="access-password">Password</label>
+                <input type="password" id="access-password" class="access-input" required autofocus>
+                <button type="submit" class="access-button">Enter</button>
+                <p id="access-error" class="access-error hidden">Incorrect password. Please try again.</p>
+            </form>
+        </div>
+    </div>
+
+    <div id="app-content" class="container hidden" aria-live="polite">
+        <header>
+            <h1>Gene Expression Dot Plot</h1>
+            <p class="subtitle">Cell Type vs. Condition Analysis</p>
+        </header>
+
+        <div class="controls">
+            <div class="gene-selector">
+                <label for="gene-input">Select Gene(s):</label>
+                <div class="autocomplete-container">
+                    <input type="text" id="gene-input" placeholder="Type gene name...">
+                    <div id="autocomplete-list" class="autocomplete-items"></div>
+                </div>
+                <div id="selected-genes" class="selected-genes"></div>
+            </div>
+            <button id="plot-btn" class="plot-button">Generate Plot</button>
+            <button id="clear-btn" class="clear-button">Clear Selection</button>
+        </div>
+
+        <div id="loading" class="loading hidden">Loading data...</div>
+        <div id="error-message" class="error hidden"></div>
+
+        <div id="visualization-container">
+            <div id="plot-area"></div>
+            <div id="legend-container">
+                <div class="legend-section">
+                    <h3>Dot Size</h3>
+                    <div id="size-legend"></div>
+                    <p class="legend-label">% Cells Expressing</p>
+                </div>
+                <div class="legend-section">
+                    <h3>Dot Color</h3>
+                    <div id="color-legend"></div>
+                    <p class="legend-label">Average Expression</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
