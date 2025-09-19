@@ -80,7 +80,7 @@ class GeneExpressionViewer {
 
     async loadData() {
         const [geneDataResponse, geneListResponse] = await Promise.all([
-            fetch('Gene_Expression_Summary_by_Condition_ALL_GENES.tsv'),
+            fetch('Gene_Expression_Summary_by_Condition.tsv'),
             fetch('gene_list_unique.txt')
         ]);
 
